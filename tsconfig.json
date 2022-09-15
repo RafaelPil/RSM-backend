@@ -16,7 +16,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "entities": ["dist/**/*.entity{.ts,.js}", "src/**/*.entity{.ts,.js}"]
+    "noFallthroughCasesInSwitch": false
   }
 }

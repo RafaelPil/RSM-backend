@@ -14,4 +14,4 @@ services:
 
 volumes:
   postgres:
-    name: rsm-backend
+    name: rsm-backend2
