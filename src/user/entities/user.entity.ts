@@ -14,6 +14,6 @@ export class User {
   @Field(() => String)
   phone: string;
 
-  @Field(() => String)
+  //@Field(() => String)
   password: string;
 }
