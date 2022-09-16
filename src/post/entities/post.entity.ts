@@ -21,7 +21,7 @@ export class Post {
   image: string;
 
   @Field(() => String)
-  updatedAt: string;
+  updatedAt?: string;
 
   @Field(() => Int)
   userId: number;

@@ -10,26 +10,26 @@ export class UserResolver {
 
   @Mutation(() => User, { nullable: true })
   async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
-    return await this.userService.create(createUserInput);
+    return await this.userService.createUser(createUserInput);
   }
 
   @Query(() => [User], { nullable: true })
-  async findAll() {
-    return await this.userService.findAll();
+  async findAllUsers() {
+    return await this.userService.findAllUsers();
   }
 
   @Query(() => User, { nullable: true })
-  async findOne(@Args('userId') userId: number) {
-    return await this.userService.findOne(userId);
+  async findOneUser(@Args('userId') userId: number) {
+    return await this.userService.findOneUser(userId);
   }
 
   @Mutation(() => User)
   async updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
-    return await this.userService.update(updateUserInput.id, updateUserInput);
+    return await this.userService.updateUser(updateUserInput.id, updateUserInput);
   }
 
   @Mutation(() => User)
-  removeUser(@Args('id', { type: () => Int }) id: number) {
-    return this.userService.remove(id);
+  removeUser(@Args('userId') userId: number) {
+    return this.userService.removeUser(userId);
   }
 }

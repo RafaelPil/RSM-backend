@@ -16,13 +16,7 @@ export class UpdatePostInput extends PartialType(CreatePostInput) {
   city: string;
 
   @Field(() => String)
-  createdAt?: string;
-
-  @Field(() => String)
   image: string;
-
-  @Field(() => String)
-  updatedAt: string;
 
   @Field(() => Int)
   userId: number;
