@@ -1,0 +1,71 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatePostInput {
+  city: String!
+  image: String!
+  price: String!
+  title: String!
+  userId: Int!
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+  phone: String!
+}
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  createUser(createUserInput: CreateUserInput!): User
+  loginUser(loginUserInput: LoginUserInput!): LoginResponse!
+  removePost(postId: Float!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+type Post {
+  city: String!
+  createdAt: String!
+  id: Int!
+  image: String!
+  price: String!
+  title: String!
+  updatedAt: String!
+  userId: Int!
+}
+
+type Query {
+  findAllPosts: [Post!]!
+  findAllUsers: [User!]
+  findOne(email: String!): User!
+  findOnePost(postId: Float!): Post!
+  findOneUserById(userId: Float!): User
+}
+
+input UpdatePostInput {
+  city: String!
+  id: Int!
+  image: String!
+  price: String!
+  title: String!
+  userId: Int!
+}
+
+type User {
+  email: String!
+  id: Int!
+  name: String!
+  phone: String!
+}

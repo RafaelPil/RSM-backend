@@ -15,21 +15,27 @@ export class UserResolver {
 
   @Query(() => [User], { nullable: true })
   async findAllUsers() {
+    // protect with jwt
     return await this.userService.findAllUsers();
   }
 
   @Query(() => User, { nullable: true })
-  async findOneUser(@Args('userId') userId: number) {
-    return await this.userService.findOneUser(userId);
+  async findOneUserById(@Args('userId') userId: number) {
+    return await this.userService.findOneUserById(userId);
   }
 
-  @Mutation(() => User)
-  async updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
-    return await this.userService.updateUser(updateUserInput.id, updateUserInput);
+  @Query(() => User)
+  async findOne(@Args('email') email: string) {
+    return await this.userService.findOneUser(email);
   }
 
-  @Mutation(() => User)
-  removeUser(@Args('userId') userId: number) {
-    return this.userService.removeUser(userId);
-  }
+  // @Mutation(() => User)
+  // async updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
+  //   return await this.userService.updateUser(updateUserInput.id, updateUserInput);
+  // }
+
+  // @Mutation(() => User)
+  // removeUser(@Args('userId') userId: number) {
+  //   return this.userService.removeUser(userId);
+  // }
 }

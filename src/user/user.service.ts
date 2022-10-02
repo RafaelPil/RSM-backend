@@ -30,7 +30,7 @@ export class UserService {
     return await this.prisma.user.findMany();
   }
 
-  async findOneUser(userId: number) {
+  async findOneUserById(userId: number) {
     try {
       return await this.prisma.user.findUnique({
         where: {
@@ -42,33 +42,41 @@ export class UserService {
     }
   }
 
-  async updateUser(userId: number, updateUserInput: UpdateUserInput) {
-    try {
-      return await this.prisma.user.update({
-        where: {
-          id: userId,
-        },
-        data: {
-          email: updateUserInput.email,
-          name: updateUserInput.name,
-          password: updateUserInput.password,
-          phone: updateUserInput.phone,
-        },
-      });
-    } catch (e) {
-      throw new BadRequestException('There is no User');
-    }
+  async findOneUser(email: string) {
+    return await this.prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
   }
 
-  async removeUser(userId: number) {
-    try {
-      return await this.prisma.user.delete({
-        where: {
-          id: userId,
-        },
-      });
-    } catch (e) {
-      throw new BadRequestException('There is no User');
-    }
-  }
+  // async updateUser(userId: number, updateUserInput: UpdateUserInput) {
+  //   try {
+  //     return await this.prisma.user.update({
+  //       where: {
+  //         id: userId,
+  //       },
+  //       data: {
+  //         email: updateUserInput.email,
+  //         name: updateUserInput.name,
+  //         password: updateUserInput.password,
+  //         phone: updateUserInput.phone,
+  //       },
+  //     });
+  //   } catch (e) {
+  //     throw new BadRequestException('There is no User');
+  //   }
+  // }
+
+  // async removeUser(userId: number) {
+  //   try {
+  //     return await this.prisma.user.delete({
+  //       where: {
+  //         id: userId,
+  //       },
+  //     });
+  //   } catch (e) {
+  //     throw new BadRequestException('There is no User');
+  //   }
+  // }
 }
