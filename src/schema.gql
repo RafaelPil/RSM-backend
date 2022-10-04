@@ -52,6 +52,7 @@ type Query {
   findOne(email: String!): User!
   findOnePost(postId: Float!): Post!
   findOneUserById(userId: Float!): User
+  profile: User!
 }
 
 input UpdatePostInput {
