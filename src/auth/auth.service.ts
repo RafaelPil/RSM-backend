@@ -38,16 +38,12 @@ export class AuthService {
     return { access_token: payload };
   }
 
-  async findUserById(userId: number) {
-    const findUserById = await this.prisma.user.findUnique({
+  async profile(userData: any): Promise<User> {
+    const user = await this.prisma.user.findUnique({
       where: {
-        id: userId,
+        email: userData.email,
       },
     });
-
-    if (!findUserById) {
-      throw new BadRequestException(`There is no user with: ${userId} ID`);
-    }
-    return findUserById;
+    return user;
   }
 }

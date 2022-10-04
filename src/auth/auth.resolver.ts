@@ -1,5 +1,5 @@
 import { UseGuards } from '@nestjs/common';
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { User } from '../user/entities/user.entity';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './current-user';
@@ -16,9 +16,9 @@ export class AuthResolver {
     return this.authService.login(loginUserInput);
   }
 
-  @Query((returns) => User)
+  @Query(() => User)
   @UseGuards(GqlAuthGuard)
-  profile(@CurrentUser() user: User) {
-    return this.authService.findUserById(user.id);
+  profile(@CurrentUser() user: any) {
+    return this.authService.profile(user);
   }
 }
