@@ -24,10 +24,13 @@ export class AuthService {
       throw new BadRequestException(`Invalid credentials no User`);
     }
 
-    if (user.password !== loginUserInput.password) {
-      throw new BadRequestException(
-        'Invalid credentials password does not patch',
-      );
+    const isMatch = await bcrypt.compare(
+      loginUserInput.password, //password
+      user.password, // hased password
+    );
+
+    if (!isMatch) {
+      throw new BadRequestException(`password is invalid`);
     }
 
     const payload = this.jwtService.sign({
